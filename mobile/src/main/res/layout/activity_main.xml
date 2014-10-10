@@ -1,0 +1,118 @@
+<!--
+  Copyright 2013 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="261dp">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:background="@color/blue">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lblPanelMobileTitle"
+                android:id="@+id/txtMobileTitle"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center|center_vertical|center_horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lvMobileDesc"
+                android:layout_below="@+id/txtMobileTitle"
+                android:layout_alignParentStart="true"
+                android:background="@android:color/holo_blue_bright"
+                android:layout_alignParentEnd="false"
+                android:layout_above="@+id/toggleMobileSDC" />
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/switchMobileSDC"
+                android:id="@+id/switchMobileSDC"
+                android:checked="false"
+                android:layout_gravity="bottom|right"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/holo_green_dark">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="218dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lblPanelWearTitle"
+                android:id="@+id/textView"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center|center_vertical|center_horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <!-- <ListView -->
+            <!--     android:layout_width="wrap_content" -->
+            <!--     android:layout_height="wrap_content" -->
+            <!--     android:id="@+id/lvWearDesc" -->
+            <!--     android:layout_alignParentBottom="true" -->
+            <!--     android:layout_alignParentStart="true" -->
+            <!--     android:layout_below="@+id/textView" -->
+            <!--     android:background="@android:color/holo_green_light" /> -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+            android:text="@string/txtAccel"
+            android:id="@+id/txtAccel"
+            android:layout_gravity="bottom|center_horizontal" />
+
+        </RelativeLayout>
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/switchWearSDC"
+            android:id="@+id/switchWearSDC"
+            android:checked="false"
+            android:layout_gravity="bottom|right" />
+
+    </FrameLayout>
+
+</LinearLayout>
