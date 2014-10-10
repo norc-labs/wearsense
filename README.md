@@ -1,4 +1,4 @@
-SparkyWearz
+WearSense
 ===========
 
-Android Wear experiments
+Sensor data acquisition from Android Wear devices.
