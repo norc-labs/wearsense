@@ -8,7 +8,9 @@ Sensor data acquisition from Android Wear devices.
 
 These instructions are for building and testing using the command
 line.  If you prefer to use Studio, just follow the standard
-instructions available online.
+instructions available online.  More details regarding command line
+usage can also be found online, and you can always run `$ adb help`,
+`$ android -h`, etc.
 
 Run `./gradlew tasks` to get a list of all tasks; add `--all` to get
 all tasks and more detail.
