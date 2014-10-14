@@ -69,3 +69,29 @@ adb -s localhost:4444 shell pm uninstall -k org.norc.sparky.wearsense
 ```
 
 The -k switch is for the app's package name.
+
+## logging
+
+Dump the log to the screen:
+
+```
+adb -s localhost:4444 logcat
+```
+
+Same, but only show the log messages tagged with `WearSDCService`
+
+```
+adb -s localhost:4444 logcat -s WearSDCService
+```
+
+Same, but for the handset:
+
+```
+adb -s <device ID> logcat -s HappActivity
+```
+
+were <device ID> is the id displayed by `adb devices`.
+
+"Happ" is for "Handset App"; "Wapp" is for "Wear App".
+
+See the code to find out which tags are available.
