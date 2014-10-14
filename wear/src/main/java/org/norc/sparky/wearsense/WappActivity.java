@@ -52,9 +52,14 @@ import com.google.android.gms.wearable.DataMap;
 import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.PutDataRequest;
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+
 public class WappActivity
-    extends Activity {
-    // implements SensorEventListener {
+    extends Activity
+    implements SensorEventListener {
 
     public static final String TAG = "WappActivity";
 
@@ -62,7 +67,7 @@ public class WappActivity
 
     private float mLastX, mLastY, mLastZ;
     private boolean mInitialized;
-    // private SensorManager mSensorManager;
+    private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private final float NOISE = (float) 2.0;
 
@@ -94,27 +99,27 @@ public class WappActivity
 
         Log.i(TAG, "Ready");
 
-	// mInitialized = false;
-        // mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        // mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+	mInitialized = false;
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         // mSensorManager.registerListener(this, mAccelerometer,
 	// 				SensorManager.SENSOR_DELAY_NORMAL);
 
-	// List<Sensor> deviceSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
-	// listSensorType = new ArrayList<String>();
-	// for(int i=0; i<deviceSensors.size(); i++){
-	//     Log.i(TAG,
-	// 	  "SENSOR: "
-	// 	  // deviceSensors.get(i).getVendor()
-	// 	  // + " " + deviceSensors.get(i).getName()
-	// 	  // + " " + deviceSensors.get(i).getVersion()
-	// 	  + ": " + deviceSensors.get(i).toString());
-	//     listSensorType.add(deviceSensors.get(i).toString());
-	// }
+	List<Sensor> deviceSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
+	listSensorType = new ArrayList<String>();
+	for(int i=0; i<deviceSensors.size(); i++){
+	    Log.i(TAG,
+		  "SENSOR: "
+		  // deviceSensors.get(i).getVendor()
+		  // + " " + deviceSensors.get(i).getName()
+		  // + " " + deviceSensors.get(i).getVersion()
+		  + ": " + deviceSensors.get(i).toString());
+	    listSensorType.add(deviceSensors.get(i).toString());
+	}
 
-	// mAdapter = new ArrayAdapter<String>((Context) this,
-	// 				    android.R.layout.simple_list_item_1,
-	// 				    listSensorType);
+	mAdapter = new ArrayAdapter<String>((Context) this,
+					    android.R.layout.simple_list_item_1,
+					    listSensorType);
 
 
 	mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -172,8 +177,8 @@ public class WappActivity
 		@Override
 		public void onLayoutInflated(WatchViewStub stub) {
 
-		    // mListView = (ListView) stub.findViewById(R.id.sensorList);
-		    // mListView.setAdapter(mAdapter);
+		    mListView = (ListView) stub.findViewById(R.id.sensorList);
+		    mListView.setAdapter(mAdapter);
 
 		    syncDesc();
 
@@ -267,11 +272,15 @@ public class WappActivity
         super.onStop();
     }
 
-    // // sensor callbacks
-    // @Override
-    // public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    // 	// can be safely ignored for this demo
-    // }
+    // sensor callbacks
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    	// can be safely ignored for this demo
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+    }
 
     // @Override
     // public void onSensorChanged(SensorEvent event) {
