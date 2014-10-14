@@ -60,5 +60,12 @@ to the handset:
 $ adb -s <device id> install -r mobile/build/outputs/apk/mobile-debug.apk
 ```
 
-
 The -s switch points to the device listed by `adb devices`
+
+Uninstall app from wearable:
+
+```
+adb -s localhost:4444 shell pm uninstall -k org.norc.sparky.wearsense
+```
+
+The -k switch is for the app's package name.
