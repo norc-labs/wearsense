@@ -6,9 +6,23 @@ Sensor data acquisition from Android Wear devices.
 
 ## Build
 
+Run `./gradlew tasks` to get a list of all tasks; add `--all` to get
+all tasks and more detail.
+
+To build:
+
 ```
 $ ./gradlew assembleDebug
 ```
+
+You may see a message along the lines of
+
+```
+Relying on packaging to define the extension of the main artifact has been deprecated and is scheduled to be removed in Gradle 2.0
+```
+
+Ignore it; it's a harmless bug in the plugin.
+
 
 ## Debug install
 
