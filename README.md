@@ -7,7 +7,10 @@ Sensor data acquisition from Android Wear devices.
 ## Build
 
 These instructions are for building and testing using the command
-line.  More details regarding command line usage can also be found
+line, on OS X.  They should work with any Unix-based system; they
+might work with Cygwin on Windows, but I haven't tried that.
+
+More details regarding command line usage can also be found
 online, and you can always run `$ adb help`, `$ android -h`, etc.
 
 To set up your environment, see the file `android-setup`.
