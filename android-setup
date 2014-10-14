@@ -1,7 +1,8 @@
 ## This code will set up the environment for command-line Android
 ## development using gradle.  Adjust the paths, then either put it in
-## your .bash_profile or source it from the command line (i.e. "$ source
-## android-setup").
+## your .bash_profile or source it from the command line, i.e. 
+
+## $ source android-setup
 
 ## NOTE: the code below is for OS X; adjust it for your OS.
 
