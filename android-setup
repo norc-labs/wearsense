@@ -1,0 +1,21 @@
+## This code will set up the environment for command-line Android
+## development using gradle.  Adjust the paths, then either put it in
+## your .bash_profile or source it from the command line (i.e. "$ source
+## android-setup").
+
+## NOTE: the code below is for OS X; adjust it for your OS.
+
+
+## NOTE: the classpath will have to adjusted for different target
+## platforms.  This example targets android-19
+
+export CLASSPATH=\"".:$JAVA_HOME/lib/tools.jar:/Applications/netrexx/lib/NetRexxC.jar:src/main/nrx:build/classes/debug:"$ANDROID_HOME"/platforms/android-19/android.jar:$ANDROID_HOME/extras/android/support/v13/android-support-v13.jar:$ANDROID_HOME/extras/android/support/v7/appcompat/libs/android-support-v7-appcompat.jar:$ANDROID_HOME/extras/android/support/v7/appcompat/libs/android-support-v4.jar:$CLASSPATH"\"
+
+JAVA_VERSION=1.7
+export JAVA_HOME=`/usr/libexec/java_home -v $JAVA_VERSION`
+
+export ANDROID_HOME="/Applications/Android Studio.app/sdk"
+
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+
+
