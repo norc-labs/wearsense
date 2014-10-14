@@ -6,6 +6,10 @@ Sensor data acquisition from Android Wear devices.
 
 ## Build
 
+These instructions are for building and testing using the command
+line.  If you prefer to use Studio, just follow the standard
+instructions available online.
+
 Run `./gradlew tasks` to get a list of all tasks; add `--all` to get
 all tasks and more detail.
 
