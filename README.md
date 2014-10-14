@@ -72,22 +72,24 @@ The -k switch is for the app's package name.
 
 ## logging
 
+To see the options for logcat:  `$ adb logcat -h`
+
 Dump the log to the screen:
 
 ```
-adb -s localhost:4444 logcat
+$ adb -s localhost:4444 logcat
 ```
 
 Same, but only show the log messages tagged with `WearSDCService`
 
 ```
-adb -s localhost:4444 logcat -s WearSDCService
+$ adb -s localhost:4444 logcat -s WearSDCService
 ```
 
 Same, but for the handset:
 
 ```
-adb -s <device ID> logcat -s HappActivity
+$ adb -s <device ID> logcat -s HappActivity
 ```
 
 were <device ID> is the id displayed by `adb devices`.
