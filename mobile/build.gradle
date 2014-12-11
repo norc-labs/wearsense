@@ -32,12 +32,11 @@ android {
         androidTest.setRoot('tests')
         androidTest.java.srcDirs = ['tests/src']
     }
-
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    wearApp project(':wear')
+    // compile fileTree(dir: 'libs', include: ['*.jar'])
+    // wearApp project(':wear')
     compile('com.android.support:support-v4:20.+'){force=true}
     compile "com.android.support:support-v13:20.+"
     compile "com.android.support:recyclerview-v7:+"

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.norc.sparky.wearsense;
+package org.norc.sparky.wear.sense;
 
 import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
@@ -43,8 +43,6 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-
-
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
@@ -71,8 +69,9 @@ import com.google.android.gms.wearable.*;
 // SDC = Sensor Data Collection
 
 public class WearSDCService
-    extends Service
+    extends WearableListenerService
     implements SensorEventListener {
+    // extends Service
 
     private String TAG = "WearSDCService";
 
@@ -113,37 +112,9 @@ public class WearSDCService
 
     @Override
     public void onCreate() {
+	super.onCreate();
 
-	mInitialized = false;
-	mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-
-	// List<Sensor> deviceSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
-	// listSensorType = new ArrayList<String>();
-	// for(int i=0; i<deviceSensors.size(); i++){
-	//     Log.i(TAG,
-	// 	  "SENSOR: "
-	// 	  // deviceSensors.get(i).getVendor()
-	// 	  // + " " + deviceSensors.get(i).getName()
-	// 	  // + " " + deviceSensors.get(i).getVersion()
-	// 	  + ": " + deviceSensors.get(i).toString());
-	//     listSensorType.add(deviceSensors.get(i).toString());
-	// }
-
-
-
-
-
-	// Start up the thread running the service.  Note that we create a
-	// separate thread because the service normally runs in the process's
-	// main thread, which we don't want to block.  We also make it
-	// background priority so CPU-intensive work will not disrupt our UI.
-	HandlerThread thread = new HandlerThread("ServiceStartArguments",
-						 Process.THREAD_PRIORITY_BACKGROUND);
-	thread.start();
-
-	// Get the HandlerThread's Looper and use it for our Handler
-	mServiceLooper = thread.getLooper();
-	mServiceHandler = new ServiceHandler(mServiceLooper);
+	Log.v(TAG, "onCreate");
 
 	mGoogleApiClient = new GoogleApiClient.Builder(this)
 	    .addConnectionCallbacks(new ConnectionCallbacks() {
@@ -183,12 +154,41 @@ public class WearSDCService
 		})
 	    .addApi(Wearable.API)
 	    .build();
+        mGoogleApiClient.connect();
+
+	mInitialized = false;
+	mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+	// List<Sensor> deviceSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
+	// listSensorType = new ArrayList<String>();
+	// for(int i=0; i<deviceSensors.size(); i++){
+	//     Log.i(TAG,
+	// 	  "SENSOR: "
+	// 	  // deviceSensors.get(i).getVendor()
+	// 	  // + " " + deviceSensors.get(i).getName()
+	// 	  // + " " + deviceSensors.get(i).getVersion()
+	// 	  + ": " + deviceSensors.get(i).toString());
+	//     listSensorType.add(deviceSensors.get(i).toString());
+	// }
+
+	// Start up the thread running the service.  Note that we create a
+	// separate thread because the service normally runs in the process's
+	// main thread, which we don't want to block.  We also make it
+	// background priority so CPU-intensive work will not disrupt our UI.
+	HandlerThread thread = new HandlerThread("ServiceStartArguments",
+						 Process.THREAD_PRIORITY_BACKGROUND);
+	thread.start();
+
+	// Get the HandlerThread's Looper and use it for our Handler
+	mServiceLooper = thread.getLooper();
+	mServiceHandler = new ServiceHandler(mServiceLooper);
 
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-	Log.i(TAG, "starting SDC service");
+	Log.i(TAG, "onStartComment");
+        return super.onStartCommand(intent, flags, startId);
 
 	Toast.makeText(this,
 		       "sensor data collection starting",
@@ -204,11 +204,11 @@ public class WearSDCService
 	return START_STICKY;
     }
 
-    @Override
-    public IBinder onBind(Intent intent) {
-	// We don't provide binding, so return null
-	return null;
-    }
+    // @Override
+    // public IBinder onBind(Intent intent) {
+    // 	// We don't provide binding, so return null
+    // 	return null;
+    // }
 
     @Override
     public void onDestroy() {
@@ -325,4 +325,13 @@ public class WearSDCService
         }
     }
 
+    public void onMessageReceived(final MessageEvent messageEvent) {
+
+	// MessageEvent methods:
+	// abstract byte[]	getData();
+	// abstract String	getPath();
+	// abstract int		getRequestId();
+	// abstract String	getSourceNodeId();
+        Log.v(TAG, "Message received on wear: " + messageEvent.getPath());
+    }
 }

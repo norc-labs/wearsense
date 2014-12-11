@@ -3,8 +3,8 @@
 	  xmlns:tools="http://schemas.android.com/tools"
 	  package="org.norc.sparky.wearsense">
 
-  <uses-sdk
-      tools:node="replace" />
+  <!-- <uses-sdk -->
+  <!--     tools:node="replace" /> -->
 
   <application
       android:allowBackup="true"
