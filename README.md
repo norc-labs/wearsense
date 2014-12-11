@@ -1,6 +1,11 @@
 WearSense
 ===========
 
+**CAVEAT** Obsolete.  This was an early first-cut app intended to
+  demonstrate a technique of reading sensors on the smartwatch and
+  transfering the data to the handset.  It may be helpful for learning
+  the technique but should probably not be developed further.
+
 Sensor data acquisition from Android Wear devices.
 
 
